@@ -13,13 +13,13 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('equipos', function (Blueprint $table) {
+        Schema::create('alquilados', function (Blueprint $table) {
             $table->id();
-            $table->string('name');
-            $table->string('codeEquipo');
-            $table->string('description');
-            $table->string('image');
-            $table->integer('quantity');
+            $table->uuid('alqCodeEquipo');
+            $table->dateTime('alqStartDate', $precision = 0);
+            $table->dateTime('alqFinalDate', $precision = 0);
+            $table->integer('alqQuantity');
+            $table->boolean('alqStatus');
             $table->timestamps();
         });
     }
@@ -31,6 +31,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('equipos');
+        Schema::dropIfExists('alquilados');
     }
 };

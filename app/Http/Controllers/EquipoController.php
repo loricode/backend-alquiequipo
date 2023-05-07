@@ -14,7 +14,7 @@ class EquipoController extends Controller
      */
     public function index()
     {
-        return Equipo::paginate(15);
+        return Equipo::get();
     }
 
     /**

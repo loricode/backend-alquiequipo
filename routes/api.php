@@ -3,6 +3,7 @@
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\EquipoController;
+use App\Http\Controllers\userController;
 /*
 |--------------------------------------------------------------------------
 | API Routes
@@ -14,11 +15,16 @@ use App\Http\Controllers\EquipoController;
 |
 */
 //endpoint
+
+//authenticated
+
+Route::get('/equipo/listEquipo', [EquipoController::class, 'index'])
+->middleware('auth');
+Route::post('/login/create', [userController::class, 'create']);
+Route::post('/login/signIn', [userController::class, 'login']);
+
 Route::get('/equipo/list', [EquipoController::class, 'show']);
 
-
-Route::get('/equipo/listEquipo', [EquipoController::class, 'index']);
-
 Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
-    return $request->user();
+    return "guig";
 });
